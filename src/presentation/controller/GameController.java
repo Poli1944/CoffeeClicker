@@ -18,17 +18,17 @@ public class GameController extends MouseAdapter implements ActionListener {
         this.view.registerController(this, this);
 
         //per testing això s'ha de treure en un futur
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",false);
-        view.addItemToShop("test1","CoffeeClicker/images/test.jpg",true);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",false);
+        view.addItemToShop("test1","images/test.jpg",true);
     }
 
     @Override

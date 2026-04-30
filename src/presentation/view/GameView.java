@@ -22,7 +22,7 @@ public class GameView extends BaseView{
         super(title, 16);
         this.coffeCount = new JLabel("0");
         this.productionRate = new JLabel("0 per second");
-        this.clickArea = new JImagePanel("CoffeeClicker/images/test.jpg"){
+        this.clickArea = new JImagePanel("images/test.jpg"){
             @Override
             public Dimension getPreferredSize() {
                 return new Dimension(300, 300);
