@@ -32,6 +32,7 @@ public class DatabaseConnector {
                     config.getPort(),
                     config.getNomBases()
             );
+            instance.connect();
         }
         return instance;
     }
