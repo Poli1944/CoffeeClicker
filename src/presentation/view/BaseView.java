@@ -37,6 +37,7 @@ public class BaseView extends JFrame {
         setTitle(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1200, 800);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 
 

@@ -18,6 +18,10 @@ public class RegisterView extends BaseView {
     private JPasswordField confirmPasswordField;
 
     private JLabel errorLabel;
+    private JLabel usernameLabel;
+    private JLabel emailLabel;
+    private JLabel passwordLabel;
+    private JLabel confirmPasswordLabel;
 
     public RegisterView() {
         super("Registro", 42);
@@ -43,14 +47,20 @@ public class RegisterView extends BaseView {
         contentPanel.add(Box.createVerticalStrut(20));
 
 
-        contentPanel.add(new JLabel("Nombre de Usuario:"));
+        usernameLabel = new JLabel("Nombre de Usuario:");
+        usernameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        contentPanel.add(usernameLabel);
         usernameField = new JTextField();
         usernameField.setMaximumSize(new Dimension(600, 50));
         contentPanel.add(usernameField);
 
         contentPanel.add(Box.createVerticalStrut(20));
 
-        contentPanel.add(new JLabel("Email:"));
+        emailLabel = new JLabel("Email:");
+        emailLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        contentPanel.add(emailLabel);
         emailField = new JTextField();
         emailField.setMaximumSize(new Dimension(600, 50));
         contentPanel.add(emailField);
@@ -58,14 +68,20 @@ public class RegisterView extends BaseView {
 
         contentPanel.add(Box.createVerticalStrut(20));
 
-        contentPanel.add(new JLabel("Contraseña:"));
+        passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        contentPanel.add(passwordLabel);
         passwordField = new JPasswordField();
         passwordField.setMaximumSize(new Dimension(600, 50));
         contentPanel.add(passwordField);
 
         contentPanel.add(Box.createVerticalStrut(10));
 
-        contentPanel.add(new JLabel("Confirmar Contraseña:"));
+        confirmPasswordLabel = new JLabel("Confirmar Contraseña:");
+        confirmPasswordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        contentPanel.add(confirmPasswordLabel);
         confirmPasswordField = new JPasswordField();
         confirmPasswordField.setMaximumSize(new Dimension(600, 50));
         contentPanel.add(confirmPasswordField);
@@ -74,7 +90,11 @@ public class RegisterView extends BaseView {
 
         errorLabel = new JLabel(" ");
         errorLabel.setForeground(Color.RED);
-        errorLabel.setAlignmentX(CENTER_ALIGNMENT);
+        errorLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        errorLabel.setPreferredSize(new Dimension(600, 40));
+        errorLabel.setMaximumSize(new Dimension(600, 40));
+        errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         contentPanel.add(errorLabel);
 
         contentPanel.add(Box.createVerticalGlue());
