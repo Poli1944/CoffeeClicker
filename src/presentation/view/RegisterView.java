@@ -6,14 +6,14 @@ import java.awt.*;
 public class RegisterView extends BaseView {
 
 
-    public static final String BTN_START    = "start";
-    public static final String BTN_BACK     = "back_to_start";
+    public static final String BTN_START = "start";
+    public static final String BTN_BACK = "back_to_start";
 
-    private JButton    startButton;
-    private JButton    backButton;
+    private JButton startButton;
+    private JButton backButton;
 
-    private JTextField    usernameField;
-    private JTextField    emailField;
+    private JTextField usernameField;
+    private JTextField emailField;
     private JPasswordField passwordField;
     private JPasswordField confirmPasswordField;
 
@@ -106,9 +106,9 @@ public class RegisterView extends BaseView {
     public JButton getStartButton() { return startButton; }
     public JButton getBackButton()  { return backButton; }
 
-    public String getUsernameField()        { return usernameField.getText().trim(); }
-    public String getEmailField()           { return emailField.getText().trim(); }
-    public String getPasswordField()        { return new String(passwordField.getPassword()); }
+    public String getUsernameField() { return usernameField.getText().trim(); }
+    public String getEmailField() { return emailField.getText().trim(); }
+    public String getPasswordField() { return new String(passwordField.getPassword()); }
     public String getConfirmPasswordField() { return new String(confirmPasswordField.getPassword()); }
 
     public void showErrorMessage(String message) {

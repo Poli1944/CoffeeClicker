@@ -8,6 +8,8 @@ public class SelectGameView extends BaseView {
 
     private ActionListener listener;
 
+    public final static String BTN_STARTGAME = "START_";
+
     private JPanel panel;
 
     public SelectGameView() {
@@ -52,7 +54,7 @@ public class SelectGameView extends BaseView {
         gamePanel.add(Box.createHorizontalStrut(30));
 
         JButton btnStart = new JButton("Select");
-        btnStart.setActionCommand("START_" + id);
+        btnStart.setActionCommand(BTN_STARTGAME + id);
 
         gamePanel.add(btnStart);
 

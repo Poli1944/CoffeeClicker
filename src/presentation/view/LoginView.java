@@ -6,12 +6,12 @@ import java.awt.*;
 public class LoginView extends BaseView {
 
     public static final String BTN_START = "start";
-    public static final String BTN_BACK  = "back_to_start";
+    public static final String BTN_BACK = "back_to_start";
 
     private JButton startButton;
     private JButton backButton;
 
-    private JTextField     loginField;
+    private JTextField loginField;
     private JPasswordField passwordField;
 
     private JLabel errorLabel;
@@ -64,9 +64,9 @@ public class LoginView extends BaseView {
 
 
     public JButton getStartButton() { return startButton; }
-    public JButton getBackButton()  { return backButton; }
+    public JButton getBackButton() { return backButton; }
 
-    public String getLoginField()    { return loginField.getText().trim(); }
+    public String getLoginField() { return loginField.getText().trim(); }
     public String getPasswordField() { return new String(passwordField.getPassword()); }
 
     public void showErrorMessage(String message) {

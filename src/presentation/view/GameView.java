@@ -17,6 +17,11 @@ public class GameView extends BaseView{
 
     private ActionListener listener;
 
+    public static final String BTN_BUY  = "Buy_";
+    public static final String BTN_SELL  = "Sell_";
+    public static final String BTN_LOGOUT  = "Logout";
+    public static final String BTN_STATS  = "Statistics";
+
 
     public GameView(String title) {
         super(title, 16);
@@ -87,9 +92,9 @@ public class GameView extends BaseView{
 
 
         JButton btnBuy = new JButton("Buy");
-        btnBuy.setActionCommand("BUY_" + name);
+        btnBuy.setActionCommand(BTN_BUY + name);
         JButton btnSell = new JButton("Sell");
-        btnSell.setActionCommand("SELL_" + name);
+        btnSell.setActionCommand(BTN_SELL + name);
 
         if (listener != null) {
             btnBuy.addActionListener(listener);
@@ -110,9 +115,9 @@ public class GameView extends BaseView{
     public void registerController(ActionListener listener, MouseListener ml) {
         this.listener = listener;
         this.logout.addActionListener(listener);
-        this.logout.setActionCommand("LOGOUT");
+        this.logout.setActionCommand(BTN_LOGOUT);
         this.stats.addActionListener(listener);
-        this.stats.setActionCommand("STATS");
+        this.stats.setActionCommand(BTN_STATS);
         this.clickArea.addMouseListener(ml);
     }
 

@@ -19,12 +19,12 @@ public class UserManager {
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$");
 
-    private User    currentUser;
+    private User currentUser;
     private final UserDAO userDAO;
 
 
     public UserManager(Config config) {
-        this.userDAO     = new SQLUserDAO(config);
+        this.userDAO = new SQLUserDAO(config);
         this.currentUser = null;
     }
 
@@ -44,8 +44,7 @@ public class UserManager {
     }
 
 
-    public String register(String username, String email,
-                           String password, String confirmPassword) {
+    public String register(String username, String email, String password, String confirmPassword) {
 
         if (!validateUsernameFormat(username)) {
             return "El nombre de usuario no puede estar vacío.";
@@ -54,8 +53,7 @@ public class UserManager {
             return "El formato del email no es válido.";
         }
         if (!validatePasswordFormat(password)) {
-            return "La contraseña debe tener mínimo 8 caracteres, "
-                    + "una mayúscula, una minúscula y un número.";
+            return "La contraseña debe tener mínimo 8 caracteres, " + "una mayúscula, una minúscula y un número.";
         }
 
 

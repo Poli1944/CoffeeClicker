@@ -11,6 +11,8 @@ public class StatisticsView extends BaseView{
     private JButton btnBack;
     private JPanel grafPanel;
 
+    public final static String BTN_STOP = "stats_to_game";
+
     public StatisticsView(){
         super("Game Statistics", 24);
 
@@ -65,7 +67,7 @@ public class StatisticsView extends BaseView{
 
     public void registerController(ActionListener l) {
         this.btnBack.addActionListener(l);
-        this.btnBack.setActionCommand("BACK_TO_GAME");
+        this.btnBack.setActionCommand(BTN_STOP);
         this.userSelector.addActionListener(l);
         this.gameSelector.addActionListener(l);
     }

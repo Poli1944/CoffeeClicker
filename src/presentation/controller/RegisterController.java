@@ -15,23 +15,26 @@ public class RegisterController implements ActionListener {
 
     private final RegisterView view;
     private final UserManager  userManager;
-    private       ActionListener navListener; // NavController listens here
+    private ActionListener navListener; // NavController listens here
+    private NavController navController;
 
     /**
      * @param view        the RegisterView this controller manages
      * @param userManager the business manager (already initialised with Config)
      */
-    public RegisterController(RegisterView view, UserManager userManager) {
-        this.view        = view;
+    public RegisterController(RegisterView view, UserManager userManager, NavController navController) {
+        this.view = view;
         this.userManager = userManager;
+        this.navController = navController;
+
+        view.getStartButton().addActionListener(this);
+        view.getBackButton().addActionListener(this);
     }
 
-    /** NavController calls this to receive navigation events. */
     public void addActionListener(ActionListener listener) {
         this.navListener = listener;
     }
 
-    // ── ActionListener ───────────────────────────────────────────────
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -39,27 +42,27 @@ public class RegisterController implements ActionListener {
 
             case RegisterView.BTN_START:
                 handleRegister();
+                navController.navigate(RegisterView.BTN_START);
                 break;
 
             case RegisterView.BTN_BACK:
                 // Tell NavController to go back to StartView
                 fireAction("BACK_FROM_REGISTER");
+                navController.navigate(RegisterView.BTN_BACK);
                 break;
 
             default:
-                System.err.println("[RegisterController] Unknown action: "
-                        + e.getActionCommand());
+                System.err.println("[RegisterController] Unknown action: " + e.getActionCommand());
         }
     }
 
-    // ── Private helpers ──────────────────────────────────────────────
 
     private void handleRegister() {
         view.clearError();
 
-        String username        = view.getUsernameField();
-        String email           = view.getEmailField();
-        String password        = view.getPasswordField();
+        String username = view.getUsernameField();
+        String email = view.getEmailField();
+        String password = view.getPasswordField();
         String confirmPassword = view.getConfirmPasswordField();
 
         // UserManager performs ALL validation + DB work
@@ -67,7 +70,7 @@ public class RegisterController implements ActionListener {
         String error = userManager.register(username, email, password, confirmPassword);
 
         if (error == null) {
-            // Registration + auto-login succeeded → navigate to SelectGame
+            // Registration + auto-login succeeded -> navigate to SelectGame
             fireAction(RegisterView.BTN_START); // NavController listens for "start"
         } else {
             view.showErrorMessage(error);
