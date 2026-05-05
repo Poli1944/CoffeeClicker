@@ -32,16 +32,6 @@ public class RegisterView extends BaseView {
     void configureView() {
 
 
-        JPanel leftPanel = new JPanel();
-        leftPanel.setPreferredSize(new Dimension(500, 0));
-        leftPanel.setOpaque(false);
-        add(leftPanel, BorderLayout.WEST);
-
-        JPanel rightPanel = new JPanel();
-        rightPanel.setPreferredSize(new Dimension(500, 0));
-        rightPanel.setOpaque(false);
-        add(rightPanel, BorderLayout.EAST);
-
 
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.add(Box.createVerticalStrut(20));

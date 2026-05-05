@@ -12,7 +12,7 @@ public class StartView extends BaseView {
     public final static String BTN_LOG = "login";
 
     public StartView() {
-        super("X Clicker", 52);
+        super("X Clicker", 72);
         configureView();
 
     }
@@ -20,34 +20,37 @@ public class StartView extends BaseView {
     void configureView() {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 250, 10));
-        contentPanel.add(Box.createVerticalGlue());
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(75, 10, 0, 10));
 
 
         loginButton = new JButton("Iniciar Sesión");
 
         loginButton.setActionCommand(BTN_LOG);
 
-        loginButton.setFont(kavoon.deriveFont(Font.BOLD, 16f));
-        loginButton.setPreferredSize(new Dimension(200, 50));
-        loginButton.setMaximumSize(new Dimension(200, 50));
+        loginButton.setFont(kavoon.deriveFont(Font.BOLD, 24f));
+        loginButton.setPreferredSize(new Dimension(300, 50));
+        loginButton.setMaximumSize(new Dimension(300, 50));
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         contentPanel.add(loginButton);
 
         contentPanel.add(Box.createVerticalStrut(30));
 
+
+
         JPanel registerPanel = new JPanel();
-
-        registerPanel.setPreferredSize(new Dimension(200, 100));
-        registerPanel.setMaximumSize(new Dimension(200, 100));
-
         registerPanel.setLayout(new BoxLayout(registerPanel, BoxLayout.Y_AXIS));
+        registerPanel.setPreferredSize(new Dimension(300, 80));
+        registerPanel.setMaximumSize(new Dimension(300, 80));
         registerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        registerPanel.setOpaque(false);
 
         JLabel registerLabel = new JLabel("¿No tienes cuenta?");
         registerLabel.setFont(kavoon.deriveFont(Font.BOLD, 12f));
-        registerLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        registerLabel.setPreferredSize(new Dimension(300, 20));
+        registerLabel.setMaximumSize(new Dimension(300, 20));
+        registerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        registerLabel.setHorizontalAlignment(JLabel.LEFT);
 
         registerPanel.add(registerLabel);
 
@@ -55,13 +58,12 @@ public class StartView extends BaseView {
 
         registerButton.setActionCommand(BTN_REG);
 
-        registerButton.setFont(kavoon.deriveFont(Font.BOLD, 16f));
-        registerButton.setPreferredSize(new Dimension(200, 50));
-        registerButton.setMaximumSize(new Dimension(200, 50));
+        registerButton.setFont(kavoon.deriveFont(Font.BOLD, 24f));
+        registerButton.setPreferredSize(new Dimension(300, 50));
+        registerButton.setMaximumSize(new Dimension(300, 50));
         registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         registerPanel.add(registerButton);
-
 
         contentPanel.add(registerPanel);
 
