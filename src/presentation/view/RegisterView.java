@@ -90,7 +90,7 @@ public class RegisterView extends BaseView {
 
         errorLabel = new JLabel(" ");
         errorLabel.setForeground(Color.RED);
-        errorLabel.setFont(kavoon.deriveFont(Font.BOLD, 14f));
+        errorLabel.setFont(kavoon.deriveFont(Font.BOLD, 12f));
         errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         errorLabel.setMaximumSize(new Dimension(600, 30));
         errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
