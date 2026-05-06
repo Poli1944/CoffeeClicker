@@ -73,7 +73,6 @@ public class SelectGameView extends BaseView {
         nameLabel.setFont(kavoon.deriveFont(Font.PLAIN, 36f));
 
 
-
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         leftPanel.setOpaque(false);
         leftPanel.add(nameLabel);
@@ -84,7 +83,6 @@ public class SelectGameView extends BaseView {
         JButton btnStart = new JButton("Select");
         btnStart.setFont(kavoon.deriveFont(Font.BOLD, 18f));
         btnStart.setActionCommand(BTN_STARTGAME + id);
-
 
 
         JButton btnDelete = new JButton("Eliminar");
@@ -106,9 +104,19 @@ public class SelectGameView extends BaseView {
         panel.add(gamePanel);
         panel.add(Box.createVerticalStrut(15));
 
+        panel.revalidate(); //Actualizar vista
+        panel.repaint();
+
     }
 
     public void setListener(ActionListener listener) {
         this.listener = listener;
+    }
+
+    public JButton getBackButton() {
+        return  backButton;
+    }
+    public JButton getNewGameButton() {
+        return  newGameButton;
     }
 }

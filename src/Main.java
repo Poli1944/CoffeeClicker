@@ -21,7 +21,7 @@ public class Main {
 
             NavController navController = new NavController(config, startView, registerView, loginView, selectGameView, statisticsView);
 
-            SelectGameController selectGameController = new SelectGameController(selectGameView);
+            SelectGameController selectGameController = new SelectGameController(selectGameView,  navController);
 
             startView.start();
         });

@@ -15,7 +15,6 @@ public class RegisterController implements ActionListener {
 
     private final RegisterView view;
     private final UserManager  userManager;
-    private ActionListener navListener; // NavController listens here
     private NavController navController;
 
     /**
@@ -29,10 +28,6 @@ public class RegisterController implements ActionListener {
 
         view.getStartButton().addActionListener(this);
         view.getBackButton().addActionListener(this);
-    }
-
-    public void addActionListener(ActionListener listener) {
-        this.navListener = listener;
     }
 
 
