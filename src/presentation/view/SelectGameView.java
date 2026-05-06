@@ -15,6 +15,8 @@ public class SelectGameView extends BaseView {
 
     private JButton backButton;
     private JButton newGameButton;
+    private JButton deleteGameButton;
+    private JButton startButton;
 
     private JPanel panel;
 
@@ -85,18 +87,18 @@ public class SelectGameView extends BaseView {
         btnStart.setActionCommand(BTN_STARTGAME + id);
 
 
-        JButton btnDelete = new JButton("Eliminar");
-        btnDelete.setFont(kavoon.deriveFont(Font.BOLD, 18f));
-        btnDelete.setActionCommand(BTN_DELETEGAME + id);
+        deleteGameButton = new JButton("Eliminar");
+        deleteGameButton.setFont(kavoon.deriveFont(Font.BOLD, 18f));
+        deleteGameButton.setActionCommand(BTN_DELETEGAME + id);
 
         if (listener != null) {
             btnStart.addActionListener(listener);
-            btnDelete.addActionListener(listener);
+            deleteGameButton.addActionListener(listener);
         }
 
         JPanel rightButtons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
         rightButtons.add(btnStart);
-        rightButtons.add(btnDelete);
+        rightButtons.add(deleteGameButton);
 
         gamePanel.add(rightButtons, BorderLayout.EAST);
 

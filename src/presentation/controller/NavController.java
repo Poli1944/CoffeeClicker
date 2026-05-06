@@ -88,7 +88,11 @@ public class NavController {
                 break;
 
             default:
-                System.err.println("[NavController] Unknown action: " + action);
+                if (action.startsWith(SelectGameView.BTN_STARTGAME)) {
+                    startGameView(action.substring(SelectGameView.BTN_STARTGAME.length()));
+                } else {
+                     System.err.println("[NavController] Unknown action: " + action);
+                }
         }
     }
 

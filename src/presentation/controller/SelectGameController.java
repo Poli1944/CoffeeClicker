@@ -16,7 +16,7 @@ public class SelectGameController implements ActionListener {
         this.view = view;
         this.navController = navController;
 
-        n = 0;
+        n = 1;
 
         view.setListener(this);
 
@@ -41,7 +41,7 @@ public class SelectGameController implements ActionListener {
 
             default:
                 if (e.getActionCommand().startsWith(SelectGameView.BTN_DELETEGAME)) {
-                    navController.navigate(e.getActionCommand());
+                    navController.navigate(e.getActionCommand()); //TODO
                 } else if (e.getActionCommand().startsWith(SelectGameView.BTN_STARTGAME)) {
                     navController.navigate(e.getActionCommand());
                 }
