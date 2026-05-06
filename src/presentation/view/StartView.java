@@ -46,7 +46,7 @@ public class StartView extends BaseView {
         registerPanel.setOpaque(false);
 
         JLabel registerLabel = new JLabel("¿No tienes cuenta?");
-        registerLabel.setFont(kavoon.deriveFont(Font.BOLD, 12f));
+        registerLabel.setFont(kavoon.deriveFont(Font.PLAIN, 16f));
         registerLabel.setPreferredSize(new Dimension(300, 20));
         registerLabel.setMaximumSize(new Dimension(300, 20));
         registerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -69,7 +69,7 @@ public class LoginView extends BaseView {
 
         contentPanel.add(Box.createVerticalGlue());
 
-        JPanel buttonPanel = new JPanel();
+        JPanel buttonPanel = new JPanel((new FlowLayout(FlowLayout.CENTER, 30, 10)));
 
         backButton = new JButton("Volver");
         backButton.setFont(kavoon.deriveFont(Font.BOLD, 24f));
