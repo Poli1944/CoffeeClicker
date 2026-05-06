@@ -1,107 +1,118 @@
 package presentation.controller;
 
+import business.entities.Config;
+import business.managers.UserManager;
 import presentation.view.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NavController implements ActionListener {
 
-    StartView startView;
-    RegisterView registerView;
-    ActionListener listener;
-    LoginView loginView;
-    SelectGameView selectGameView;
-    StatisticsView statisticsView;
+public class NavController {
+
+    private final StartView startView;
+    private final RegisterView registerView;
+    private final LoginView loginView;
+    private final SelectGameView selectGameView;
+    private final StatisticsView statisticsView;
+
+    private final UserManager userManager;
+
+    private final LoginController loginController;
+    private final RegisterController registerController;
+    private final StartController startController;
 
 
-    public NavController(StartView startView, RegisterView registerView, LoginView loginView, SelectGameView selectGameView, StatisticsView statisticsView) {
+    /**
+     * @param config app config read from config.json — needed by UserManager
+     */
+    public NavController(Config config, StartView startView, RegisterView registerView,
+                         LoginView loginView, SelectGameView selectGameView, StatisticsView statisticsView) {
+
         this.startView = startView;
-        this.startView.getRegisterButton().addActionListener(this);
-        this.startView.getLoginButton().addActionListener(this);
         this.registerView = registerView;
-        this.registerView.getStartButton().addActionListener(this);
         this.loginView = loginView;
-        this.loginView.getStartButton().addActionListener(this);
         this.selectGameView = selectGameView;
-        this.selectGameView.setListener(this);
         this.statisticsView = statisticsView;
-        StatisticsController statisticsController = new StatisticsController(statisticsView);
-        statisticsController.addActionListener(this);
+
+        // Business
+        this.userManager = new UserManager(config);
+
+        this.startController = new StartController(startView, this);
+
+
+
+        // RegisterController
+        this.registerController = new RegisterController(registerView, userManager, this);
+
+        // LoginController
+        this.loginController = new LoginController(loginView, userManager, this);
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    public void navigate(String action) {
+        switch (action) {
 
-
-
-        switch (e.getActionCommand()) {
             case StartView.BTN_REG:
                 startRegisterView();
-
                 break;
 
             case StartView.BTN_LOG:
                 startLoginView();
-
                 break;
 
-            case RegisterView.BTN_START:
-
+            case LoginView.BTN_START:
                 startSelectGameView();
-
                 break;
 
-            case "STATS_PRESSED":
+
+            case LoginView.BTN_BACK:
+                loginView.stop();
+                registerView.stop();
+                startView.start();
+                break;
+
+            // In-game navigation
+            case GameView.BTN_STATS:
                 statisticsView.start();
                 break;
 
-            case "BACK_TO_GAME":
+            case StatisticsView.BTN_STOP:
                 statisticsView.stop();
                 break;
 
-            case "LOGOUT_PRESSED": //TODO
+            case GameView.BTN_LOGOUT: //TODO: Quitar la lógica de UserManager
+                userManager.logout();
                 startView.start();
+                break;
 
             default:
-                if (e.getActionCommand().startsWith("START_")) {
-                    startGameView(e.getActionCommand().substring("START_".length()));
-
-                } else {
-                    System.err.println("Unknown action command " + e.getActionCommand());
-                }
-
+                System.err.println("[NavController] Unknown action: " + action);
         }
     }
 
-    public void startRegisterView(){
+
+    public void startRegisterView() {
         registerView.start();
         startView.stop();
     }
 
-    public void startLoginView(){
+    public void startLoginView() {
         loginView.start();
         startView.stop();
     }
 
-    public void startSelectGameView(){
+    public void startSelectGameView() {
         selectGameView.start();
         loginView.stop();
         registerView.stop();
     }
 
     public void startGameView(String id) {
-
         GameView gameView = new GameView("Game - " + id);
         GameController gameController = new GameController(gameView);
-        gameController.addActionListener(this);
         gameView.start();
         selectGameView.stop();
-    }
-
-    public void addActionListener(ActionListener listener){
-        this.listener = listener;
     }
 }
