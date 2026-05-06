@@ -14,6 +14,9 @@ public class LoginView extends BaseView {
     private JTextField loginField;
     private JPasswordField passwordField;
 
+    private JLabel loginLabel;
+    private JLabel passwordLabel;
+
     private JLabel errorLabel;
 
     public LoginView() {
@@ -26,24 +29,41 @@ public class LoginView extends BaseView {
 
 
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        contentPanel.add(Box.createVerticalStrut(20));
+        contentPanel.add(Box.createVerticalStrut(80));
 
-        contentPanel.add(new JLabel("Nombre de Usuario o Email:"));
+        loginLabel = new JLabel("Nombre de Usuario o Email:");
+        loginLabel.setFont(kavoon.deriveFont(Font.PLAIN, 18f));
+        loginLabel.setMaximumSize(new Dimension(600, 30));
+        loginLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginLabel.setHorizontalAlignment(JLabel.LEFT);
+
+        contentPanel.add(loginLabel);
         loginField = new JTextField();
-        loginField.setMaximumSize(new Dimension(600, 50));
+        loginField.setMaximumSize(new Dimension(600, 100));
+        loginField.setFont(kavoon.deriveFont(Font.PLAIN, 24f));
         contentPanel.add(loginField);
 
         contentPanel.add(Box.createVerticalStrut(20));
 
-        contentPanel.add(new JLabel("Contraseña:"));
+        passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setFont(kavoon.deriveFont(Font.PLAIN, 18f));
+        passwordLabel.setMaximumSize(new Dimension(600, 30));
+        passwordLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        passwordLabel.setHorizontalAlignment(JLabel.LEFT);
+
+        contentPanel.add(passwordLabel);
+
+
         passwordField = new JPasswordField();
-        passwordField.setMaximumSize(new Dimension(600, 50));
+        passwordField.setMaximumSize(new Dimension(600, 100));
+        passwordField.setFont(kavoon.deriveFont(Font.PLAIN, 24f));
         contentPanel.add(passwordField);
 
         contentPanel.add(Box.createVerticalStrut(10));
 
-        errorLabel = new JLabel(" ");
+        errorLabel = new JLabel();
         errorLabel.setForeground(Color.RED);
+        errorLabel.setFont(kavoon.deriveFont(Font.BOLD, 14f));
         errorLabel.setAlignmentX(CENTER_ALIGNMENT);
         contentPanel.add(errorLabel);
 
@@ -52,11 +72,17 @@ public class LoginView extends BaseView {
         JPanel buttonPanel = new JPanel();
 
         backButton = new JButton("Volver");
+        backButton.setFont(kavoon.deriveFont(Font.BOLD, 24f));
+        backButton.setMaximumSize(new Dimension(1000, 50));
         backButton.setActionCommand(BTN_BACK);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
+
         buttonPanel.add(backButton);
 
         startButton = new JButton("Iniciar Sesión");
         startButton.setActionCommand(BTN_START);
+        startButton.setFont(kavoon.deriveFont(Font.BOLD, 24f));
+        startButton.setMaximumSize(new Dimension(1000, 50));
         buttonPanel.add(startButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
