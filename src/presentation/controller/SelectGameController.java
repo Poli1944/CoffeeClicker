@@ -2,26 +2,50 @@ package presentation.controller;
 
 import presentation.view.SelectGameView;
 
-public class SelectGameController {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    SelectGameView view;
+public class SelectGameController implements ActionListener {
 
-    public SelectGameController(SelectGameView view) {
+    private SelectGameView view;
+    private NavController navController;
+
+    private static int n;
+
+    public SelectGameController(SelectGameView view, NavController navController)  {
         this.view = view;
+        this.navController = navController;
 
-        view.addGame("1");
-        view.addGame("2");
-        view.addGame("3");
-        view.addGame("4");
-        view.addGame("5");
-        view.addGame("6");
-        view.addGame("7");
-        view.addGame("8");
-        view.addGame("9");
-        view.addGame("10");
-        view.addGame("11");
+        n = 1;
+
+        view.setListener(this);
+
+        view.getBackButton().addActionListener(this);
+        view.getNewGameButton().addActionListener(this);
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case SelectGameView.BTN_BACK:
+                navController.navigate(SelectGameView.BTN_BACK);
+                break;
 
+
+            case SelectGameView.BTN_NEWGAME:
+                view.addGame(Integer.toString(n));
+
+                n++;
+                break;
+
+            default:
+                if (e.getActionCommand().startsWith(SelectGameView.BTN_DELETEGAME)) {
+                    navController.navigate(e.getActionCommand()); //TODO
+                } else if (e.getActionCommand().startsWith(SelectGameView.BTN_STARTGAME)) {
+                    navController.navigate(e.getActionCommand());
+                }
+
+        }
+    }
 }

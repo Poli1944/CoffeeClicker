@@ -15,7 +15,6 @@ public class RegisterController implements ActionListener {
 
     private final RegisterView view;
     private final UserManager  userManager;
-    private ActionListener navListener; // NavController listens here
     private NavController navController;
 
     /**
@@ -31,10 +30,6 @@ public class RegisterController implements ActionListener {
         view.getBackButton().addActionListener(this);
     }
 
-    public void addActionListener(ActionListener listener) {
-        this.navListener = listener;
-    }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,12 +37,11 @@ public class RegisterController implements ActionListener {
 
             case RegisterView.BTN_START:
                 handleRegister();
-                navController.navigate(RegisterView.BTN_START);
+                navController.navigate(RegisterView.BTN_START); //TODO: PROVISIONAL HASTA QUE FUNCIONE EL LOGIN
+
                 break;
 
             case RegisterView.BTN_BACK:
-                // Tell NavController to go back to StartView
-                fireAction("BACK_FROM_REGISTER");
                 navController.navigate(RegisterView.BTN_BACK);
                 break;
 
@@ -71,17 +65,9 @@ public class RegisterController implements ActionListener {
 
         if (error == null) {
             // Registration + auto-login succeeded -> navigate to SelectGame
-            fireAction(RegisterView.BTN_START); // NavController listens for "start"
+            navController.navigate(RegisterView.BTN_START); // NavController listens for "start"
         } else {
             view.showErrorMessage(error);
-        }
-    }
-
-    /** Forwards an action command to NavController. */
-    private void fireAction(String command) {
-        if (navListener != null) {
-            navListener.actionPerformed(
-                    new ActionEvent(this, ActionEvent.ACTION_PERFORMED, command));
         }
     }
 }
